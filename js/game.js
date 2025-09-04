@@ -578,8 +578,11 @@ class SnakeGame {
 
 // 页面加载完成后初始化游戏
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM加载完成，开始初始化游戏...'); // 调试信息
     const game = new SnakeGame();
+    game.init(); // 调用初始化方法
     
     // 将游戏实例挂载到全局，方便调试
     window.snakeGame = game;
+    console.log('游戏初始化完成！'); // 调试信息
 });
