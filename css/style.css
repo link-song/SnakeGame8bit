@@ -63,6 +63,69 @@ body {
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
+/* 齿轮按钮样式 */
+.gear-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    color: #00ff00;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+}
+
+.gear-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+    transform: rotate(90deg);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+/* 齿轮菜单样式 */
+.gear-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    padding: 10px;
+    min-width: 150px;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.gear-menu.show {
+    display: flex;
+}
+
+.gear-menu-item {
+    background: transparent;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    color: #00ff00;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.gear-menu-item:hover {
+    background: rgba(0, 255, 0, 0.2);
+    transform: translateX(5px);
+}
+
 /* 游戏主区域 */
 .game-main {
     flex: 1;
@@ -347,6 +410,30 @@ body {
     display: none; /* 桌面端隐藏，移动端显示 */
 }
 
+/* 桌面端齿轮按钮样式 */
+.gear-btn {
+    display: flex; /* 桌面端显示 */
+}
+
+.gear-menu {
+    display: none; /* 默认隐藏 */
+}
+
+/* 确保齿轮菜单在桌面端正确显示 */
+@media (min-width: 769px) {
+    .gear-btn {
+        display: flex;
+    }
+    
+    .gear-menu {
+        display: none;
+    }
+    
+    .gear-menu.show {
+        display: flex;
+    }
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .game-container {
@@ -360,6 +447,15 @@ body {
     .score-board {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    /* 移动端隐藏齿轮按钮 */
+    .gear-btn {
+        display: none;
+    }
+    
+    .gear-menu {
+        display: none !important;
     }
     
     /* 移动端控制面板重新布局 */

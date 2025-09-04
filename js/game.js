@@ -94,6 +94,35 @@ class SnakeGame {
             this.hideHistory();
         });
         
+        // 齿轮按钮事件监听
+        document.getElementById('gear-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.toggleGearMenu();
+        });
+        
+        // 齿轮菜单项事件监听
+        document.getElementById('gear-settings').addEventListener('click', () => {
+            this.hideGearMenu();
+            this.showSettings();
+        });
+        
+        document.getElementById('gear-history').addEventListener('click', () => {
+            this.hideGearMenu();
+            this.showHistory();
+        });
+        
+        document.getElementById('gear-instructions').addEventListener('click', () => {
+            this.hideGearMenu();
+            this.showInstructions();
+        });
+        
+        // 点击其他地方关闭齿轮菜单
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.gear-btn') && !e.target.closest('.gear-menu')) {
+                this.hideGearMenu();
+            }
+        });
+        
         // 移动端虚拟方向键
         document.getElementById('up-btn').addEventListener('click', () => {
             this.setDirection('up');
@@ -457,6 +486,16 @@ class SnakeGame {
             'hard': '困难'
         };
         return difficultyMap[difficulty] || difficulty;
+    }
+    
+    toggleGearMenu() {
+        const gearMenu = document.getElementById('gear-menu');
+        gearMenu.classList.toggle('show');
+    }
+    
+    hideGearMenu() {
+        const gearMenu = document.getElementById('gear-menu');
+        gearMenu.classList.remove('show');
     }
     
     saveScore() {
