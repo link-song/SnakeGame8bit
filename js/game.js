@@ -214,7 +214,7 @@ class SnakeGame {
             this.resetGame();
             this.gameState = 'running';
             this.updateButtons();
-            this.startGameLoop();
+            this.updateGameSpeed(); // 确保使用当前选择的难度速度
         }
     }
     
@@ -235,7 +235,7 @@ class SnakeGame {
         this.resetGame();
         this.gameState = 'running';
         this.updateButtons();
-        this.startGameLoop();
+        this.updateGameSpeed(); // 确保使用当前选择的难度速度
     }
     
     resetGame() {
