@@ -221,7 +221,7 @@ body {
     display: grid;
     grid-template-areas: 
         ". up ."
-        "left center right"
+        "left . right"
         ". down .";
     grid-template-columns: 60px 60px 60px;
     grid-template-rows: 60px 60px 60px;
