@@ -247,13 +247,17 @@ class SnakeGame {
         console.log('togglePause被调用，当前游戏状态:', this.gameState); // 调试信息
         
         if (this.gameState === 'running') {
+            console.log('暂停游戏...'); // 调试信息
             this.gameState = 'paused';
             this.stopGameLoop();
             this.updateButtons();
+            console.log('游戏已暂停，状态:', this.gameState); // 调试信息
         } else if (this.gameState === 'paused') {
+            console.log('继续游戏...'); // 调试信息
             this.gameState = 'running';
             this.updateGameSpeed(); // 确保使用当前选择的难度速度
             this.updateButtons();
+            console.log('游戏已继续，状态:', this.gameState); // 调试信息
         } else {
             console.log('游戏状态不是running或paused，无法暂停/继续'); // 调试信息
         }
