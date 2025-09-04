@@ -80,30 +80,15 @@ class SnakeGame {
             this.showSettings();
         });
         
-        // 添加历史记录显示功能
-        const historyBtn = document.createElement('button');
-        historyBtn.id = 'history-btn';
-        historyBtn.className = 'btn btn-secondary';
-        historyBtn.textContent = '历史记录';
-        historyBtn.addEventListener('click', () => {
+        // 历史记录按钮事件监听
+        document.getElementById('history-btn').addEventListener('click', () => {
             this.showHistory();
         });
         
-        // 将历史记录按钮插入到设置按钮后面
-        const settingsBtn = document.getElementById('settings-btn');
-        settingsBtn.parentNode.insertBefore(historyBtn, settingsBtn.nextSibling);
-        
-        // 添加游戏说明按钮
-        const instructionsBtn = document.createElement('button');
-        instructionsBtn.id = 'instructions-btn';
-        instructionsBtn.className = 'btn btn-secondary';
-        instructionsBtn.textContent = '游戏说明';
-        instructionsBtn.addEventListener('click', () => {
+        // 游戏说明按钮事件监听
+        document.getElementById('instructions-btn').addEventListener('click', () => {
             this.showInstructions();
         });
-        
-        // 将说明按钮插入到历史记录按钮后面
-        historyBtn.parentNode.insertBefore(instructionsBtn, historyBtn.nextSibling);
         
         document.getElementById('close-history').addEventListener('click', () => {
             this.hideHistory();

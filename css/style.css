@@ -342,6 +342,11 @@ body {
     font-size: 0.6rem;
 }
 
+/* 桌面端次要按钮组样式 */
+.secondary-buttons {
+    display: none; /* 桌面端隐藏，移动端显示 */
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .game-container {
@@ -357,18 +362,55 @@ body {
         gap: 10px;
     }
     
-    .control-buttons {
+    /* 移动端控制面板重新布局 */
+    .game-controls {
         flex-direction: column;
+        gap: 15px;
         width: 100%;
     }
     
-    .btn {
+    .control-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         width: 100%;
-        max-width: 200px;
+        max-width: 400px;
     }
     
+    .control-buttons .btn {
+        width: 100%;
+        max-width: none;
+        font-size: 0.7rem;
+        padding: 10px 15px;
+    }
+    
+    /* 移动端方向键居中显示 */
     .mobile-controls {
         display: block;
+        order: 2;
+        margin: 15px 0;
+    }
+    
+    .direction-pad {
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    /* 移动端次要按钮组 */
+    .secondary-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+        max-width: 400px;
+        order: 3;
+    }
+    
+    .secondary-buttons .btn {
+        width: 100%;
+        max-width: none;
+        font-size: 0.6rem;
+        padding: 8px 12px;
     }
     
     #gameCanvas {
