@@ -99,14 +99,18 @@ body {
     box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
     padding: 10px;
     min-width: 150px;
-    z-index: 50;
+    z-index: 1000; /* 增加z-index确保在最上层 */
     display: none;
     flex-direction: column;
     gap: 5px;
+    margin-top: 5px; /* 添加一些间距 */
 }
 
 .gear-menu.show {
     display: flex;
+    /* 临时调试样式 */
+    background: rgba(255, 0, 0, 0.9) !important; /* 红色背景便于调试 */
+    border: 3px solid #ffff00 !important; /* 黄色边框便于调试 */
 }
 
 .gear-menu-item {
