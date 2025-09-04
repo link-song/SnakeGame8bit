@@ -67,86 +67,98 @@ class SnakeGame {
             this.handleKeyPress(e);
         });
         
-        // 主要控制按钮
-        document.getElementById('start-btn').addEventListener('click', () => {
-            this.startGame();
-        });
-        
-        document.getElementById('pause-btn').addEventListener('click', () => {
-            console.log('暂停按钮被点击！'); // 调试信息
-            this.togglePause();
-        });
-        
-        document.getElementById('restart-btn').addEventListener('click', () => {
-            console.log('重新开始按钮被点击！'); // 调试信息
-            this.restartGame();
-        });
-        
-        // 设置面板关闭按钮
-        document.getElementById('close-settings').addEventListener('click', () => {
-            this.hideSettings();
-        });
-        
-        document.getElementById('close-history').addEventListener('click', () => {
-            this.hideHistory();
-        });
-        
-        // 移动端按钮事件监听
-        document.getElementById('mobile-settings-btn').addEventListener('click', () => {
-            this.showSettings();
-        });
-        
-        document.getElementById('mobile-history-btn').addEventListener('click', () => {
-            this.showHistory();
-        });
-        
-        document.getElementById('mobile-instructions-btn').addEventListener('click', () => {
-            this.showInstructions();
-        });
-        
-        // 桌面端按钮事件监听
-        if (desktopSettingsBtn) {
-            desktopSettingsBtn.addEventListener('click', () => {
+        // 使用事件委托处理按钮点击
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            
+            // 开始游戏/重新开始按钮
+            if (target.id === 'start-btn') {
+                console.log('开始游戏按钮被点击！');
+                this.startGame();
+                return;
+            }
+            
+            // 暂停/继续按钮
+            if (target.id === 'pause-btn') {
+                console.log('暂停按钮被点击！');
+                this.togglePause();
+                return;
+            }
+            
+            // 重新开始按钮（在游戏结束覆盖层中）
+            if (target.id === 'restart-btn') {
+                console.log('重新开始按钮被点击！');
+                this.restartGame();
+                return;
+            }
+            
+            // 设置面板关闭按钮
+            if (target.id === 'close-settings') {
+                this.hideSettings();
+                return;
+            }
+            
+            // 历史记录关闭按钮
+            if (target.id === 'close-history') {
+                this.hideHistory();
+                return;
+            }
+            
+            // 移动端按钮
+            if (target.id === 'mobile-settings-btn') {
+                this.showSettings();
+                return;
+            }
+            
+            if (target.id === 'mobile-history-btn') {
+                this.showHistory();
+                return;
+            }
+            
+            if (target.id === 'mobile-instructions-btn') {
+                this.showInstructions();
+                return;
+            }
+            
+            // 桌面端按钮
+            if (target.id === 'desktop-settings-btn') {
                 console.log('桌面端设置按钮被点击！');
                 this.showSettings();
-            });
-        } else {
-            console.error('桌面端设置按钮未找到！');
-        }
-        
-        if (desktopHistoryBtn) {
-            desktopHistoryBtn.addEventListener('click', () => {
+                return;
+            }
+            
+            if (target.id === 'desktop-history-btn') {
                 console.log('桌面端历史记录按钮被点击！');
                 this.showHistory();
-            });
-        } else {
-            console.error('桌面端历史记录按钮未找到！');
-        }
-        
-        if (desktopInstructionsBtn) {
-            desktopInstructionsBtn.addEventListener('click', () => {
+                return;
+            }
+            
+            if (target.id === 'desktop-instructions-btn') {
                 console.log('桌面端游戏说明按钮被点击！');
                 this.showInstructions();
-            });
-        } else {
-            console.error('桌面端游戏说明按钮未找到！');
-        }
-        
-        // 移动端虚拟方向键
-        document.getElementById('up-btn').addEventListener('click', () => {
-            this.setDirection('up');
-        });
-        
-        document.getElementById('down-btn').addEventListener('click', () => {
-            this.setDirection('down');
-        });
-        
-        document.getElementById('left-btn').addEventListener('click', () => {
-            this.setDirection('left');
-        });
-        
-        document.getElementById('right-btn').addEventListener('click', () => {
-            this.setDirection('right');
+                return;
+            }
+            
+            // 方向键
+            if (target.id === 'up-btn') {
+                this.setDirection('up');
+                return;
+            }
+            
+            if (target.id === 'down-btn') {
+                this.setDirection('down');
+                return;
+            }
+            
+            if (target.id === 'left-btn') {
+                this.setDirection('left');
+                return;
+            }
+            
+            if (target.id === 'right-btn') {
+                this.setDirection('right');
+                return;
+            }
         });
         
         // 设置面板
