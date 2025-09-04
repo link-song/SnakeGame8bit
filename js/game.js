@@ -294,6 +294,7 @@ class SnakeGame {
             this.draw();
         }, this.speedConfig[this.difficulty]);
         console.log('游戏循环已启动，ID:', this.gameLoop); // 调试信息
+        console.log('setInterval是否创建成功:', typeof this.gameLoop === 'number'); // 新增：确认setInterval是否创建成功
     }
     
     stopGameLoop() {
@@ -317,47 +318,51 @@ class SnakeGame {
     update() {
         console.log('update被调用，游戏状态:', this.gameState, '蛇长度:', this.snake.length); // 调试信息
         
-        // 更新方向
-        this.direction = this.nextDirection;
-        
-        // 移动蛇头
-        const head = {...this.snake[0]};
-        switch(this.direction) {
-            case 'up':
-                head.y--;
-                break;
-            case 'down':
-                head.y++;
-                break;
-            case 'left':
-                head.x--;
-                break;
-            case 'right':
-                head.x++;
-                break;
-        }
-        
-        console.log('蛇头新位置:', head.x, head.y); // 调试信息
-        
-        // 检查碰撞
-        if (this.checkCollision(head)) {
-            console.log('检测到碰撞，游戏结束'); // 调试信息
-            this.gameOver();
-            return;
-        }
-        
-        // 添加新头部
-        this.snake.unshift(head);
-        
-        // 检查是否吃到食物
-        if (head.x === this.food.x && head.y === this.food.y) {
-            console.log('吃到食物！'); // 调试信息
-            this.score += 10;
-            this.updateScoreDisplay();
-            this.food = this.generateFood();
-        } else {
-            // 如果没有吃到食物，移除尾部
-            this.snake.pop();
+        try {
+            // 更新方向
+            this.direction = this.nextDirection;
+            
+            // 移动蛇头
+            const head = {...this.snake[0]};
+            switch(this.direction) {
+                case 'up':
+                    head.y--;
+                    break;
+                case 'down':
+                    head.y++;
+                    break;
+                case 'left':
+                    head.x--;
+                    break;
+                case 'right':
+                    head.x++;
+                    break;
+            }
+            
+            console.log('蛇头新位置:', head.x, head.y); // 调试信息
+            
+            // 检查碰撞
+            if (this.checkCollision(head)) {
+                console.log('检测到碰撞，游戏结束'); // 调试信息
+                this.gameOver();
+                return;
+            }
+            
+            // 添加新头部
+            this.snake.unshift(head);
+            
+            // 检查是否吃到食物
+            if (head.x === this.food.x && head.y === this.food.y) {
+                console.log('吃到食物！'); // 调试信息
+                this.score += 10;
+                this.updateScoreDisplay();
+                this.food = this.generateFood();
+            } else {
+                // 如果没有吃到食物，移除尾部
+                this.snake.pop();
+            }
+        } catch (error) {
+            console.error('update方法执行出错:', error); // 新增：捕获update方法中的错误
         }
     }
     
