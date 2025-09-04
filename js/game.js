@@ -230,11 +230,16 @@ class SnakeGame {
     }
     
     startGame() {
+        console.log('startGame被调用，当前游戏状态:', this.gameState); // 调试信息
         if (this.gameState === 'stopped' || this.gameState === 'gameOver') {
+            console.log('开始新游戏...'); // 调试信息
             this.resetGame();
             this.gameState = 'running';
             this.updateButtons();
             this.updateGameSpeed(); // 确保使用当前选择的难度速度
+            console.log('游戏已启动，状态:', this.gameState); // 调试信息
+        } else {
+            console.log('游戏已在运行中，无法再次启动'); // 调试信息
         }
     }
     
@@ -255,11 +260,13 @@ class SnakeGame {
     }
     
     restartGame() {
+        console.log('restartGame被调用，当前游戏状态:', this.gameState); // 调试信息
         this.hideGameOver();
         this.resetGame();
         this.gameState = 'running';
         this.updateButtons();
         this.updateGameSpeed(); // 确保使用当前选择的难度速度
+        console.log('游戏已重新开始，状态:', this.gameState); // 调试信息
     }
     
     resetGame() {
@@ -276,10 +283,12 @@ class SnakeGame {
     }
     
     startGameLoop() {
+        console.log('startGameLoop被调用，速度:', this.speedConfig[this.difficulty], 'ms'); // 调试信息
         this.gameLoop = setInterval(() => {
             this.update();
             this.draw();
         }, this.speedConfig[this.difficulty]);
+        console.log('游戏循环已启动，ID:', this.gameLoop); // 调试信息
     }
     
     stopGameLoop() {
