@@ -107,33 +107,17 @@ class SnakeGame {
             this.hideHistory();
         });
         
-        // 齿轮按钮事件监听
-        document.getElementById('gear-btn').addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.toggleGearMenu();
-        });
-        
-        // 齿轮菜单项事件监听
-        document.getElementById('gear-settings').addEventListener('click', () => {
-            this.hideGearMenu();
+        // 桌面端按钮事件监听
+        document.getElementById('desktop-settings-btn').addEventListener('click', () => {
             this.showSettings();
         });
         
-        document.getElementById('gear-history').addEventListener('click', () => {
-            this.hideGearMenu();
+        document.getElementById('desktop-history-btn').addEventListener('click', () => {
             this.showHistory();
         });
         
-        document.getElementById('gear-instructions').addEventListener('click', () => {
-            this.hideGearMenu();
+        document.getElementById('desktop-instructions-btn').addEventListener('click', () => {
             this.showInstructions();
-        });
-        
-        // 点击其他地方关闭齿轮菜单
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.gear-btn') && !e.target.closest('.gear-menu')) {
-                this.hideGearMenu();
-            }
         });
         
         // 移动端虚拟方向键
@@ -499,19 +483,6 @@ class SnakeGame {
             'hard': '困难'
         };
         return difficultyMap[difficulty] || difficulty;
-    }
-    
-    toggleGearMenu() {
-        const gearMenu = document.getElementById('gear-menu');
-        console.log('齿轮按钮被点击了！'); // 调试信息
-        console.log('齿轮菜单元素:', gearMenu); // 调试信息
-        gearMenu.classList.toggle('show');
-        console.log('齿轮菜单显示状态:', gearMenu.classList.contains('show')); // 调试信息
-    }
-    
-    hideGearMenu() {
-        const gearMenu = document.getElementById('gear-menu');
-        gearMenu.classList.remove('show');
     }
     
     saveScore() {

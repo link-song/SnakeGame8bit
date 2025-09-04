@@ -63,72 +63,18 @@ body {
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
-/* 齿轮按钮样式 */
-.gear-btn {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid #00ff00;
-    border-radius: 8px;
-    color: #00ff00;
-    font-size: 1.2rem;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+/* 桌面端次级按钮样式 */
+.desktop-secondary-buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-width: 40px;
-    height: 40px;
-    position: relative; /* 添加相对定位 */
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.gear-btn:hover {
-    background: rgba(0, 255, 0, 0.2);
-    transform: rotate(90deg);
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-}
-
-/* 齿轮菜单样式 */
-.gear-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid #00ff00;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-    padding: 10px;
-    min-width: 150px;
-    z-index: 1000; /* 增加z-index确保在最上层 */
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 5px; /* 添加一些间距 */
-}
-
-.gear-menu.show {
-    display: flex;
-    /* 临时调试样式 */
-    background: rgba(255, 0, 0, 0.9) !important; /* 红色背景便于调试 */
-    border: 3px solid #ffff00 !important; /* 黄色边框便于调试 */
-}
-
-.gear-menu-item {
-    background: transparent;
-    border: 1px solid #00ff00;
-    border-radius: 4px;
-    color: #00ff00;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.6rem;
-    text-align: left;
-    transition: all 0.2s ease;
-}
-
-.gear-menu-item:hover {
-    background: rgba(0, 255, 0, 0.2);
-    transform: translateX(5px);
+.desktop-secondary-buttons .btn {
+    font-size: 0.7rem;
+    padding: 10px 15px;
 }
 
 /* 游戏主区域 */
@@ -457,6 +403,11 @@ body {
     .score-board {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    /* 移动端隐藏桌面端次级按钮 */
+    .desktop-secondary-buttons {
+        display: none;
     }
     
     /* 移动端隐藏齿轮按钮 */
