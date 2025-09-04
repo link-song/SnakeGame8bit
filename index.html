@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复古像素风格贪吃蛇游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题 -->
+        <header class="game-header">
+            <h1 class="game-title">贪吃蛇游戏</h1>
+            <div class="score-board">
+                <div class="current-score">
+                    <span>当前分数: </span>
+                    <span id="current-score">0</span>
+                </div>
+                <div class="high-score">
+                    <span>最高分数: </span>
+                    <span id="high-score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 游戏主区域 -->
+        <main class="game-main">
+            <div class="game-area">
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+                <div class="game-overlay" id="game-overlay">
+                    <div class="game-message" id="game-message">
+                        <h2>游戏结束</h2>
+                        <p>您的分数: <span id="final-score">0</span></p>
+                        <button id="restart-btn" class="btn btn-primary">重新开始</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 游戏控制面板 -->
+            <div class="game-controls">
+                <div class="control-buttons">
+                    <button id="start-btn" class="btn btn-primary">开始游戏</button>
+                    <button id="pause-btn" class="btn btn-secondary" disabled>暂停</button>
+                    <button id="settings-btn" class="btn btn-secondary">设置</button>
+                </div>
+                
+                <!-- 移动端虚拟方向键 -->
+                <div class="mobile-controls" id="mobile-controls">
+                    <div class="direction-pad">
+                        <button class="dir-btn up" id="up-btn">↑</button>
+                        <div class="middle-row">
+                            <button class="dir-btn left" id="left-btn">←</button>
+                            <button class="dir-btn right" id="right-btn">→</button>
+                        </div>
+                        <button class="dir-btn down" id="down-btn">↓</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 游戏设置面板 -->
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-content">
+                <h3>游戏设置</h3>
+                <div class="setting-group">
+                    <label for="difficulty-select">难度选择:</label>
+                    <select id="difficulty-select">
+                        <option value="easy">简单</option>
+                        <option value="medium" selected>中等</option>
+                        <option value="hard">困难</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="pixel-style-select">像素风格:</label>
+                    <select id="pixel-style-select">
+                        <option value="8bit">8-bit</option>
+                        <option value="16bit" selected>16-bit</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <button id="close-settings" class="btn btn-secondary">关闭</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史记录面板 -->
+        <div class="history-panel" id="history-panel">
+            <div class="history-content">
+                <h3>历史记录</h3>
+                <div class="history-list" id="history-list">
+                    <!-- 历史记录将通过JavaScript动态生成 -->
+                </div>
+                <button id="close-history" class="btn btn-secondary">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
