@@ -73,10 +73,12 @@ class SnakeGame {
         });
         
         document.getElementById('pause-btn').addEventListener('click', () => {
+            console.log('暂停按钮被点击！'); // 调试信息
             this.togglePause();
         });
         
         document.getElementById('restart-btn').addEventListener('click', () => {
+            console.log('重新开始按钮被点击！'); // 调试信息
             this.restartGame();
         });
         
