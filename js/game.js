@@ -288,6 +288,15 @@ class SnakeGame {
     
     startGameLoop() {
         console.log('startGameLoop被调用，速度:', this.speedConfig[this.difficulty], 'ms'); // 调试信息
+        console.log('准备创建setInterval，速度配置:', this.speedConfig[this.difficulty]); // 新增：检查速度配置
+        console.log('当前难度:', this.difficulty); // 新增：检查当前难度
+        
+        // 先测试setTimeout是否能正常工作
+        const testTimeout = setTimeout(() => {
+            console.log('setTimeout测试成功！'); // 测试setTimeout是否工作
+        }, 100);
+        console.log('setTimeout测试ID:', testTimeout); // 检查setTimeout返回值
+        
         this.gameLoop = setInterval(() => {
             console.log('setInterval 回调函数正在执行！'); // 新增：确认回调是否执行
             this.update();
@@ -295,6 +304,8 @@ class SnakeGame {
         }, this.speedConfig[this.difficulty]);
         console.log('游戏循环已启动，ID:', this.gameLoop); // 调试信息
         console.log('setInterval是否创建成功:', typeof this.gameLoop === 'number'); // 新增：确认setInterval是否创建成功
+        console.log('setInterval返回值类型:', typeof this.gameLoop); // 新增：检查返回值类型
+        console.log('setInterval返回值:', this.gameLoop); // 新增：检查具体返回值
     }
     
     stopGameLoop() {
