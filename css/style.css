@@ -221,10 +221,14 @@ body {
     display: grid;
     grid-template-areas: 
         ". up ."
-        "left . right"
+        "left center right"
         ". down .";
-    gap: 10px;
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: 60px 60px 60px;
+    gap: 8px;
     justify-items: center;
+    align-items: center;
+    position: relative;
 }
 
 .dir-btn {
@@ -240,21 +244,52 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
 .dir-btn:hover {
     background: rgba(0, 255, 0, 0.2);
     transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
 }
 
 .dir-btn:active {
     transform: scale(0.95);
 }
 
-.dir-btn.up { grid-area: up; }
-.dir-btn.left { grid-area: left; }
-.dir-btn.right { grid-area: right; }
-.dir-btn.down { grid-area: down; }
+/* 方向键网格区域定义 */
+.dir-btn.up { 
+    grid-area: up; 
+    border-radius: 8px 8px 4px 4px;
+}
+.dir-btn.left { 
+    grid-area: left; 
+    border-radius: 8px 4px 4px 8px;
+}
+.dir-btn.right { 
+    grid-area: right; 
+    border-radius: 4px 8px 8px 4px;
+}
+.dir-btn.down { 
+    grid-area: down; 
+    border-radius: 4px 4px 8px 8px;
+}
+
+/* 中心点装饰 */
+.direction-pad::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 255, 0, 0.3);
+    border: 1px solid #00ff00;
+    border-radius: 50%;
+    z-index: 1;
+}
 
 /* 设置面板 */
 .settings-panel, .history-panel {
@@ -496,6 +531,17 @@ body {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
+    }
+    
+    .direction-pad {
+        grid-template-columns: 50px 50px 50px;
+        grid-template-rows: 50px 50px 50px;
+        gap: 6px;
+    }
+    
+    .direction-pad::after {
+        width: 16px;
+        height: 16px;
     }
     
     .settings-content, .history-content {
