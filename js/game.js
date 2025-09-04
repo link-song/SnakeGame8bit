@@ -285,6 +285,7 @@ class SnakeGame {
     startGameLoop() {
         console.log('startGameLoop被调用，速度:', this.speedConfig[this.difficulty], 'ms'); // 调试信息
         this.gameLoop = setInterval(() => {
+            console.log('setInterval 回调函数正在执行！'); // 新增：确认回调是否执行
             this.update();
             this.draw();
         }, this.speedConfig[this.difficulty]);
