@@ -306,6 +306,8 @@ class SnakeGame {
     }
     
     update() {
+        console.log('update被调用，游戏状态:', this.gameState, '蛇长度:', this.snake.length); // 调试信息
+        
         // 更新方向
         this.direction = this.nextDirection;
         
@@ -326,8 +328,11 @@ class SnakeGame {
                 break;
         }
         
+        console.log('蛇头新位置:', head.x, head.y); // 调试信息
+        
         // 检查碰撞
         if (this.checkCollision(head)) {
+            console.log('检测到碰撞，游戏结束'); // 调试信息
             this.gameOver();
             return;
         }
@@ -337,6 +342,7 @@ class SnakeGame {
         
         // 检查是否吃到食物
         if (head.x === this.food.x && head.y === this.food.y) {
+            console.log('吃到食物！'); // 调试信息
             this.score += 10;
             this.updateScoreDisplay();
             this.food = this.generateFood();
@@ -377,6 +383,8 @@ class SnakeGame {
     }
     
     draw() {
+        console.log('draw被调用，游戏状态:', this.gameState); // 调试信息
+        
         // 清空画布
         this.ctx.fillStyle = '#000000';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
