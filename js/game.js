@@ -71,23 +71,29 @@ class SnakeGame {
         document.addEventListener('click', (e) => {
             const target = e.target;
             
-            // 开始游戏/重新开始按钮
+            console.log('点击的元素ID:', target.id, '文本内容:', target.textContent); // 调试信息
+            
+            // 开始游戏/重新开始按钮（start-btn，文本会根据状态变化）
             if (target.id === 'start-btn') {
-                console.log('开始游戏按钮被点击！');
-                this.startGame();
+                console.log('start-btn被点击！文本内容:', target.textContent);
+                if (target.textContent === '开始游戏') {
+                    this.startGame();
+                } else if (target.textContent === '重新开始') {
+                    this.restartGame();
+                }
                 return;
             }
             
-            // 暂停/继续按钮
+            // 暂停/继续按钮（pause-btn，文本会根据状态变化）
             if (target.id === 'pause-btn') {
-                console.log('暂停按钮被点击！');
+                console.log('pause-btn被点击！文本内容:', target.textContent);
                 this.togglePause();
                 return;
             }
             
-            // 重新开始按钮（在游戏结束覆盖层中）
+            // 重新开始按钮（在游戏结束覆盖层中，固定ID）
             if (target.id === 'restart-btn') {
-                console.log('重新开始按钮被点击！');
+                console.log('restart-btn被点击！');
                 this.restartGame();
                 return;
             }
