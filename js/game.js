@@ -221,6 +221,8 @@ class SnakeGame {
     }
     
     togglePause() {
+        console.log('togglePause被调用，当前游戏状态:', this.gameState); // 调试信息
+        
         if (this.gameState === 'running') {
             this.gameState = 'paused';
             this.stopGameLoop();
@@ -229,6 +231,8 @@ class SnakeGame {
             this.gameState = 'running';
             this.updateGameSpeed(); // 确保使用当前选择的难度速度
             this.updateButtons();
+        } else {
+            console.log('游戏状态不是running或paused，无法暂停/继续'); // 调试信息
         }
     }
     
@@ -423,11 +427,14 @@ class SnakeGame {
         const startBtn = document.getElementById('start-btn');
         const pauseBtn = document.getElementById('pause-btn');
         
+        console.log('更新按钮状态，当前游戏状态:', this.gameState); // 调试信息
+        
         switch(this.gameState) {
             case 'stopped':
             case 'gameOver':
                 startBtn.textContent = '开始游戏';
                 pauseBtn.disabled = true;
+                pauseBtn.textContent = '暂停';
                 break;
             case 'running':
                 startBtn.textContent = '重新开始';
