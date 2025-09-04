@@ -304,9 +304,13 @@ class SnakeGame {
     }
     
     updateGameSpeed() {
+        console.log('updateGameSpeed被调用，当前游戏状态:', this.gameState); // 调试信息
         if (this.gameState === 'running') {
+            console.log('游戏正在运行，重新启动游戏循环...'); // 调试信息
             this.stopGameLoop();
             this.startGameLoop();
+        } else {
+            console.log('游戏状态不是running，不启动游戏循环'); // 调试信息
         }
     }
     
