@@ -225,7 +225,7 @@ class SnakeGame {
             this.updateButtons();
         } else if (this.gameState === 'paused') {
             this.gameState = 'running';
-            this.startGameLoop();
+            this.updateGameSpeed(); // 确保使用当前选择的难度速度
             this.updateButtons();
         }
     }
