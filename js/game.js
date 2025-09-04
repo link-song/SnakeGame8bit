@@ -15,11 +15,11 @@ class SnakeGame {
         this.difficulty = 'medium';
         this.pixelStyle = '16bit';
         
-        // 游戏速度配置
+        // 游戏速度配置（毫秒间隔，数值越大越慢）
         this.speedConfig = {
-            easy: 150,
-            medium: 100,
-            hard: 70
+            easy: 300,    // 简单：300ms，非常慢，适合新手
+            medium: 200,  // 中等：200ms，适中速度
+            hard: 120     // 困难：120ms，较快但可控
         };
         
         // 蛇的初始状态
