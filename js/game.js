@@ -305,7 +305,10 @@ class SnakeGame {
             this.gameLoop = setTimeout(gameStep, this.speedConfig[this.difficulty]);
         };
         
-        this.gameLoop = setTimeout(gameStep, this.speedConfig[this.difficulty]);
+        // 立即执行一次，然后设置定时器
+        console.log('立即执行一次gameStep...'); // 新增：立即执行测试
+        gameStep();
+        
         console.log('游戏循环已启动，ID:', this.gameLoop); // 调试信息
         console.log('setInterval是否创建成功:', typeof this.gameLoop === 'number'); // 新增：确认setInterval是否创建成功
         console.log('setInterval返回值类型:', typeof this.gameLoop); // 新增：检查返回值类型
