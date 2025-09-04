@@ -90,6 +90,19 @@ class SnakeGame {
             this.showInstructions();
         });
         
+        // 移动端按钮事件监听
+        document.getElementById('mobile-settings-btn').addEventListener('click', () => {
+            this.showSettings();
+        });
+        
+        document.getElementById('mobile-history-btn').addEventListener('click', () => {
+            this.showHistory();
+        });
+        
+        document.getElementById('mobile-instructions-btn').addEventListener('click', () => {
+            this.showInstructions();
+        });
+        
         document.getElementById('close-history').addEventListener('click', () => {
             this.hideHistory();
         });

@@ -432,6 +432,11 @@ body {
     .gear-menu.show {
         display: flex;
     }
+    
+    /* 桌面端隐藏次要按钮组 */
+    .secondary-buttons {
+        display: none !important;
+    }
 }
 
 /* 响应式设计 */
