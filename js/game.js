@@ -49,12 +49,25 @@ class SnakeGame {
     }
     
     setupEventListeners() {
+        // 添加调试信息，检查DOM元素是否存在
+        console.log('开始设置事件监听器...');
+        
+        const desktopSettingsBtn = document.getElementById('desktop-settings-btn');
+        const desktopHistoryBtn = document.getElementById('desktop-history-btn');
+        const desktopInstructionsBtn = document.getElementById('desktop-instructions-btn');
+        
+        console.log('桌面端按钮元素:', {
+            settings: desktopSettingsBtn,
+            history: desktopHistoryBtn,
+            instructions: desktopInstructionsBtn
+        });
+        
         // 键盘控制
         document.addEventListener('keydown', (e) => {
             this.handleKeyPress(e);
         });
         
-        // 按钮控制
+        // 主要控制按钮
         document.getElementById('start-btn').addEventListener('click', () => {
             this.startGame();
         });
@@ -67,27 +80,13 @@ class SnakeGame {
             this.restartGame();
         });
         
-        document.getElementById('settings-btn').addEventListener('click', () => {
-            this.showSettings();
-        });
-        
+        // 设置面板关闭按钮
         document.getElementById('close-settings').addEventListener('click', () => {
             this.hideSettings();
         });
         
-        // 历史记录按钮
-        document.getElementById('settings-btn').addEventListener('click', () => {
-            this.showSettings();
-        });
-        
-        // 历史记录按钮事件监听
-        document.getElementById('history-btn').addEventListener('click', () => {
-            this.showHistory();
-        });
-        
-        // 游戏说明按钮事件监听
-        document.getElementById('instructions-btn').addEventListener('click', () => {
-            this.showInstructions();
+        document.getElementById('close-history').addEventListener('click', () => {
+            this.hideHistory();
         });
         
         // 移动端按钮事件监听
@@ -103,22 +102,33 @@ class SnakeGame {
             this.showInstructions();
         });
         
-        document.getElementById('close-history').addEventListener('click', () => {
-            this.hideHistory();
-        });
-        
         // 桌面端按钮事件监听
-        document.getElementById('desktop-settings-btn').addEventListener('click', () => {
-            this.showSettings();
-        });
+        if (desktopSettingsBtn) {
+            desktopSettingsBtn.addEventListener('click', () => {
+                console.log('桌面端设置按钮被点击！');
+                this.showSettings();
+            });
+        } else {
+            console.error('桌面端设置按钮未找到！');
+        }
         
-        document.getElementById('desktop-history-btn').addEventListener('click', () => {
-            this.showHistory();
-        });
+        if (desktopHistoryBtn) {
+            desktopHistoryBtn.addEventListener('click', () => {
+                console.log('桌面端历史记录按钮被点击！');
+                this.showHistory();
+            });
+        } else {
+            console.error('桌面端历史记录按钮未找到！');
+        }
         
-        document.getElementById('desktop-instructions-btn').addEventListener('click', () => {
-            this.showInstructions();
-        });
+        if (desktopInstructionsBtn) {
+            desktopInstructionsBtn.addEventListener('click', () => {
+                console.log('桌面端游戏说明按钮被点击！');
+                this.showInstructions();
+            });
+        } else {
+            console.error('桌面端游戏说明按钮未找到！');
+        }
         
         // 移动端虚拟方向键
         document.getElementById('up-btn').addEventListener('click', () => {
