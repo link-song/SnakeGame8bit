@@ -440,6 +440,7 @@ class SnakeGame {
     }
     
     showSettings() {
+        console.log('设置按钮被点击了！'); // 调试信息
         document.getElementById('settings-panel').classList.add('show');
     }
     
@@ -448,6 +449,7 @@ class SnakeGame {
     }
     
     showHistory() {
+        console.log('历史记录按钮被点击了！'); // 调试信息
         this.updateHistoryDisplay();
         document.getElementById('history-panel').classList.add('show');
     }
@@ -522,6 +524,7 @@ class SnakeGame {
     
     // 添加游戏说明显示
     showInstructions() {
+        console.log('游戏说明按钮被点击了！'); // 调试信息
         const instructions = `
             <div style="text-align: left; line-height: 1.6;">
                 <h4 style="color: #00ff00; margin-bottom: 10px;">游戏说明：</h4>

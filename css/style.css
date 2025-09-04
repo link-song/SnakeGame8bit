@@ -67,14 +67,17 @@ body {
 .desktop-secondary-buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .desktop-secondary-buttons .btn {
-    font-size: 0.7rem;
-    padding: 10px 15px;
+    font-size: 0.75rem;
+    padding: 12px 20px;
+    min-width: 100px;
+    text-align: center;
 }
 
 /* 游戏主区域 */
@@ -457,17 +460,19 @@ body {
     .secondary-buttons {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 8px;
+        gap: 10px;
         width: 100%;
         max-width: 400px;
         order: 3;
+        margin-top: 10px;
     }
     
     .secondary-buttons .btn {
         width: 100%;
         max-width: none;
-        font-size: 0.6rem;
-        padding: 8px 12px;
+        font-size: 0.65rem;
+        padding: 10px 8px;
+        min-height: 40px;
     }
     
     #gameCanvas {
