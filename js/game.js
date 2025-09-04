@@ -503,7 +503,10 @@ class SnakeGame {
     
     toggleGearMenu() {
         const gearMenu = document.getElementById('gear-menu');
+        console.log('齿轮按钮被点击了！'); // 调试信息
+        console.log('齿轮菜单元素:', gearMenu); // 调试信息
         gearMenu.classList.toggle('show');
+        console.log('齿轮菜单显示状态:', gearMenu.classList.contains('show')); // 调试信息
     }
     
     hideGearMenu() {
