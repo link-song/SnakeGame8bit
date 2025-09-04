@@ -297,11 +297,15 @@ class SnakeGame {
         }, 100);
         console.log('setTimeout测试ID:', testTimeout); // 检查setTimeout返回值
         
-        this.gameLoop = setInterval(() => {
+        // 尝试使用setTimeout模拟setInterval
+        const gameStep = () => {
             console.log('setInterval 回调函数正在执行！'); // 新增：确认回调是否执行
             this.update();
             this.draw();
-        }, this.speedConfig[this.difficulty]);
+            this.gameLoop = setTimeout(gameStep, this.speedConfig[this.difficulty]);
+        };
+        
+        this.gameLoop = setTimeout(gameStep, this.speedConfig[this.difficulty]);
         console.log('游戏循环已启动，ID:', this.gameLoop); // 调试信息
         console.log('setInterval是否创建成功:', typeof this.gameLoop === 'number'); // 新增：确认setInterval是否创建成功
         console.log('setInterval返回值类型:', typeof this.gameLoop); // 新增：检查返回值类型
@@ -310,7 +314,7 @@ class SnakeGame {
     
     stopGameLoop() {
         if (this.gameLoop) {
-            clearInterval(this.gameLoop);
+            clearTimeout(this.gameLoop); // 改为clearTimeout
             this.gameLoop = null;
         }
     }
